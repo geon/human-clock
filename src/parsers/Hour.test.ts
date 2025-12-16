@@ -13,4 +13,9 @@ testExamples("parseHour", [
 		parser: parseHour,
 		result: createParseResult(2, 21),
 	},
+	{
+		input: "25",
+		parser: parseHour,
+		result: 0,
+	},
 ]);

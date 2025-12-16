@@ -1,8 +1,20 @@
 import { parseMonad } from "../parser-combinators/parseMonad.js";
 import { parseNumber } from "../parser-combinators/parseNumber.js";
 
-export type Hour = number;
+const validHours = [
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+	22, 23,
+] as const;
 
-export const parseHour = parseMonad(parseNumber, (parsed, { result }) =>
-	result(parsed),
+export type Hour = (typeof validHours)[number];
+
+const validHoursSet = new Set<number>(validHours);
+function isValidHour(hour: number): hour is Hour {
+	return validHoursSet.has(hour);
+}
+
+export const parseHour = parseMonad(parseNumber, (parsed, { result, error }) =>
+	isValidHour(parsed)
+		? result(parsed)
+		: error(`${parsed} is not a valid hour.`),
 );
