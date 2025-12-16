@@ -1,3 +1,8 @@
-import { parseError } from "../parser-combinators/parseError";
+import { parseMonad } from "../parser-combinators/parseMonad.js";
+import { parseNumber } from "../parser-combinators/parseNumber.js";
 
-export const parseHour = parseError;
+export type Hour = number;
+
+export const parseHour = parseMonad(parseNumber, (parsed, { result }) =>
+	result(parsed),
+);
