@@ -9,15 +9,27 @@
     "verify": "tsc && vitest --run",
     "coverage": "vitest run --coverage",
     "prettier": "prettier --write \"src/**/*.ts\"",
+    "dev": "vite",
+    "build": "vite build",
     "": ""
   },
   "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
     "@vitest/coverage-v8": "^3.2.4",
     "prettier": "^3.5.3",
     "typescript": "~5.8.3",
+    "vite": "^7.2.7",
+    "vite-plugin-typed-css-modules": "^0.5.0",
     "vitest": "^3.2.4"
   },
   "prettier": {
     "useTabs": true
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "styled-components": "^6.1.19"
   }
 }

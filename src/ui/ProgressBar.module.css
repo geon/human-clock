@@ -1,0 +1,48 @@
+.progress-bar {
+	--height: 2.2em;
+	--radius: 0.075;
+	--progress-completed: var(--accent-color);
+	--progress-left: var(--panel-color);
+
+	color: black;
+	background: linear-gradient(
+		90deg,
+		/* Replace var(--attr-value-workaround) with attr(value %) as soon as it is widely supported. */
+		var(--progress-completed) 0% var(--attr-value-workaround),
+		var(--progress-left) var(--attr-value-workaround) 100%
+	);
+
+	border-radius: 0.2em;
+	overflow: hidden;
+
+	height: var(--height);
+	width: 100%;
+	padding: 0.005em 0;
+
+	position: relative;
+	&::after {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		line-height: var(--height);
+
+		text-shadow: 0 0 1 black;
+
+		margin: 0 0.8em;
+
+		content: attr(title);
+	}
+
+	-webkit-appearance: none;
+	appearance: none;
+	&::-webkit-progress-bar,
+	&::-webkit-progress-value {
+		display: none;
+	}
+}
+
+.red {
+	--progress-color: red;
+}
