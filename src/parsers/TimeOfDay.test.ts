@@ -13,4 +13,9 @@ testExamples("parseTimeOfDay", [
 		parser: parseTimeOfDay,
 		result: createParseResult(2, { hour: 21, minute: 0 }),
 	},
+	{
+		input: "09:30",
+		parser: parseTimeOfDay,
+		result: createParseResult(5, { hour: 9, minute: 30 }),
+	},
 ]);
