@@ -33,6 +33,7 @@ const parseIntersection = parseTwoOrMoreWithSeparator(
 
 const parseUnion = parseTwoOrMoreWithSeparator(
 	parseKeyed({
+		intersection: parseIntersection,
 		span: parseSemanticTimeSpan,
 	}),
 	parseSequence([

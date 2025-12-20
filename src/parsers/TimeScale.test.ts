@@ -70,4 +70,48 @@ testExamples("parseTimeScale", [
 			],
 		} as const),
 	},
+	{
+		input: "monday, thursday 06-22",
+		parser: parseTimeScale,
+		result: createParseResult(22, {
+			type: "union",
+			value: [
+				{
+					type: "span",
+					value: {
+						type: "dayOfWeek",
+						value: "monday",
+					},
+				},
+				{
+					type: "intersection",
+					value: [
+						{
+							type: "span",
+							value: {
+								type: "dayOfWeek",
+								value: "thursday",
+							},
+						},
+						{
+							type: "span",
+							value: {
+								type: "timeOfDaySpan",
+								value: {
+									end: {
+										hour: 22,
+										minute: 0,
+									},
+									start: {
+										hour: 6,
+										minute: 0,
+									},
+								},
+							},
+						},
+					],
+				},
+			],
+		} as const),
+	},
 ]);
