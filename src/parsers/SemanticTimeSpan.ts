@@ -1,7 +1,7 @@
 import { parseChar } from "../parser-combinators/parseChar";
 import { parseKeyed } from "../parser-combinators/parseKeyed";
 import { parseMonad } from "../parser-combinators/parseMonad";
-import { Parser } from "../parser-combinators/Parser";
+import { ParsedType, Parser } from "../parser-combinators/Parser";
 import { parseSequence } from "../parser-combinators/parseSequence";
 import { parseDayOfWeek } from "./DayOfWeek";
 import { parseMonth } from "./Month";
@@ -26,3 +26,5 @@ export const parseSemanticTimeSpan = parseKeyed({
 	month: parseMonth,
 	dayOfWeek: parseDayOfWeek,
 });
+
+export type SemanticTimeSpan = ParsedType<typeof parseSemanticTimeSpan>;

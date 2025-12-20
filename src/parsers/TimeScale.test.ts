@@ -114,4 +114,15 @@ testExamples("parseTimeScale", [
 			],
 		} as const),
 	},
+	{
+		input: "(january)",
+		parser: parseTimeScale,
+		result: createParseResult(9, {
+			type: "span",
+			value: {
+				type: "month",
+				value: "january",
+			},
+		} as const),
+	},
 ]);
