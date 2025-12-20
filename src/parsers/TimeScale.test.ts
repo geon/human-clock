@@ -19,4 +19,9 @@ testExamples("parseTimeScale", [
 			},
 		} as const),
 	},
+	{
+		input: "monday garbage",
+		parser: parseTimeScale,
+		result: 6,
+	},
 ]);
