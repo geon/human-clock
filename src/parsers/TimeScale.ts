@@ -26,17 +26,23 @@ function parseTwoOrMoreWithSeparator<T>(
 }
 
 const parseIntersection = parseTwoOrMoreWithSeparator(
-	parseKeyed({
-		span: parseSemanticTimeSpan,
-	}),
+	parseAlternatives([
+		parseParenthesisWrapper,
+		parseKeyed({
+			span: parseSemanticTimeSpan,
+		}),
+	]),
 	parseChar(" "),
 );
 
 const parseUnion = parseTwoOrMoreWithSeparator(
-	parseKeyed({
-		intersection: parseIntersection,
-		span: parseSemanticTimeSpan,
-	}),
+	parseAlternatives([
+		parseParenthesisWrapper,
+		parseKeyed({
+			intersection: parseIntersection,
+			span: parseSemanticTimeSpan,
+		}),
+	]),
 	parseSequence([
 		parseOptional(parseWhitespace),
 		parseChar(","),

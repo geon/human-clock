@@ -125,4 +125,39 @@ testExamples("parseTimeScale", [
 			},
 		} as const),
 	},
+	{
+		input: "january (monday, thursday)",
+		parser: parseTimeScale,
+		result: createParseResult(26, {
+			type: "intersection",
+			value: [
+				{
+					type: "span",
+					value: {
+						type: "month",
+						value: "january",
+					},
+				},
+				{
+					type: "union",
+					value: [
+						{
+							type: "span",
+							value: {
+								type: "dayOfWeek",
+								value: "monday",
+							},
+						},
+						{
+							type: "span",
+							value: {
+								type: "dayOfWeek",
+								value: "thursday",
+							},
+						},
+					],
+				},
+			],
+		} as const),
+	},
 ]);
