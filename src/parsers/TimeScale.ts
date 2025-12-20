@@ -1,3 +1,8 @@
-import { parseError } from "../parser-combinators/parseError";
+import { parseKeyed } from "../parser-combinators/parseKeyed";
+import { parseSemanticTimeSpan } from "./SemanticTimeSpan";
 
-export const parseTimeScale = parseError;
+const parseTimeScaleFragment = parseKeyed({
+	span: parseSemanticTimeSpan,
+});
+
+export const parseTimeScale = parseTimeScaleFragment;
